@@ -5,7 +5,7 @@
 
 <div class="d-flex justify-content-between mt-3">
     <h2>Lista de Usuarios</h2>
-    <a href="cadastrar.php" class="btn btn-primary">Cadastrar</a>
+    <a href="{{route('usuario.create')}}" class="btn btn-primary">Cadastrar</a>
 </div>
 
 <hr>
@@ -27,8 +27,8 @@
             <td>Edson Rodrigues</td>
             <td>edson@teste.com.br</td>
             <td>
-                <a href="visualizar.php" class="btn btn-primary">Visualizar</a>
-                <a href="editar.php" class="btn btn-secondary">Editar</a>
+                <a href="{{route('usuario.show', ['id' => 1])}}" class="btn btn-primary">Visualizar</a>
+                <a href="{{route('usuario.editar', ['id' => 1])}}" class="btn btn-secondary">Editar</a>
                 <a href="deletar.php" class="btn btn-danger">Excluir</a>
             </td>
         </tr>

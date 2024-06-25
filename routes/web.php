@@ -6,10 +6,15 @@ use App\Http\Controllers\UsuarioController;
 
 use Illuminate\Support\Facades\Route;
 
-route::get('/',[SiteController::class, "home"]);
-route::get('/sobre-nos',[SiteController::class, "sobreNos"]);
-route::get('/contato',[SiteController::class, "contato"]);
+route::get('/',[SiteController::class, "home"])->name("site.home");
+route::get('/sobre-nos',[SiteController::class, "sobreNos"])->name("site.sobrenos");
+route::get('/contato',[SiteController::class, "contato"])->name("site.contato");
 
-route::get('/admin/usuarios',[UsuarioController::class, "index"]);
-Route::get('/admin/usuarios/{id}',[UsuarioController::class, "show"]);
-route::get('/admin/dashboard',[DashboardController::class, "dashboard"]);
+route::get('/admin/usuarios',[UsuarioController::class, "index"])->name("usuario.index");
+Route::get('/admin/usuarios/cadastrar',[UsuarioController::class, "create"])->name("usuario.create");
+Route::get('/admin/usuarios/editar/{id}',[UsuarioController::class, "edit"])->name("usuario.editar");
+Route::get('/admin/usuarios/visualizar/{id}',[UsuarioController::class, "show"])->name("usuario.show");
+Route::post('/admin/usuarios/cadastrar/salvar',[UsuarioController::class, "store"])->name("usuario.store");
+
+
+route::get('/admin/dashboard',[DashboardController::class, "dashboard"])->name("dashboard");
