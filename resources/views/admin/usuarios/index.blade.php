@@ -21,28 +21,21 @@
         </tr>
     </thead>
     <tbody>
-        <tr>
-            <td>1</td>
 
-            <td>Edson Rodrigues</td>
-            <td>edson@teste.com.br</td>
+        @foreach ($usuarios as $user)
+                    
+        <tr>
+            <td>{{$user->is}}</td>
+            <td>{{$user->nome}}</td>
+            <td>{{$user->email}}</td>
+
             <td>
-                <a href="{{route('usuario.show', ['id' => 1])}}" class="btn btn-primary">Visualizar</a>
-                <a href="{{route('usuario.editar', ['id' => 1])}}" class="btn btn-secondary">Editar</a>
+                <a href="{{route('usuario.show', ['id' => $user->id])}}" class="btn btn-primary">Visualizar</a>
+                <a href="{{route('usuario.editar', ['id' => $user->id])}}" class="btn btn-secondary">Editar</a>
                 <a href="deletar.php" class="btn btn-danger">Excluir</a>
             </td>
         </tr>
-        <tr>
-            <td>1</td>
-
-            <td>Edson Rodrigues</td>
-            <td>edson@teste.com.br</td>
-            <td>
-                <a href="#" class="btn btn-primary">Visualizar</a>
-                <a href="editar.php" class="btn btn-secondary">Editar</a>
-                <a href="#" class="btn btn-danger">Excluir</a>
-            </td>
-        </tr>
+        @endforeach
     </tbody>
 </table>
 @endsection

@@ -9,21 +9,19 @@
     <table class="table table-striped">
         <tr>
             <th>ID</th>
-            <td>1</td>
+            <td>{{$usuario->id}}</td>
         </tr>
         <tr>
             <th>Nome</th>
-            <td>Edson Rodrigues</td>
+            <td>{{$usuario->nome}}</td>
         </tr>
         <tr>
-            <td>1</td>
-
             <th>E-mail</th>
-            <td>edsonrb.2008@gmail.com</td>
+            <td>{{$usuario->email}}</td>
         </tr>
     </table>
 
-    <a href="/admin/usuarios/" class="btn btn-primary">Editar</a>
-    <a href="/admin/usuarios/" class="btn btn-secondary">Cancelar</a>
+    <a href="{{route('usuario.editar', ['id' => $usuario->id])}}" class="btn btn-primary">Editar</a>
+    <a href="{{route('usuario.index')}}" class="btn btn-secondary">Cancelar</a>
 
 @endsection

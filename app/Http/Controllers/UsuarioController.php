@@ -4,13 +4,15 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class UsuarioController extends Controller
 {
   
     public function index()
     {
-        return view('admin.usuarios.index');
+        $usuarios = User::all();
+        return view('admin.usuarios.index', compact('usuarios'));
     }
 
     public function create()
@@ -20,12 +22,19 @@ class UsuarioController extends Controller
 
     public function store(Request $request)
     {
-        //
+        User::create([
+            'nome' => $request->nome,
+            'email' => $request->email,
+            'password' => Hash::make($request->senha)
+        ]);
+
+        return redirect()->route('usuario.index');
     }
 
     public function show(string $id)
     {
-        return view('admin.usuarios.visualizar');
+        $usuario = User::findOrFail($id);
+        return view('admin.usuarios.visualizar', compact('usuario'));
     }
 
     public function edit(string $id)
