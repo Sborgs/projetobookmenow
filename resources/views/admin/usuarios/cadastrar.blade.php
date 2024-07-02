@@ -3,30 +3,39 @@
 @section('conteudo')
     <div class="d-flex justify-content-between mt-3">
         <h2>Cadastrar Usuarios</h2>
- 
-    </div>
- 
-    <hr>
+     </div>
+     <hr>
+
+     @if ($errors->any())
+        <div class="boxError alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $erro)
+                    <li>{{ $erro }}</li>
+                @endforeach                
+            </ul>
+        </div>
+     @endif
+
     <form action="{{ route('usuario.store')}}" method="post">
         @csrf
         <div class="mb-3">
             <label for="nome"  class="form-label">Nome</label>
-            <input type="text" name="nome" class="form-control" id="nome" placeholder="Seu nome">            
+            <input type="text" name="nome" class="form-control" id="nome" placeholder="Seu nome" value="{{ old('nome') }}">            
         </div>
  
         <div class="mb-3">
             <label for="email"  class="form-label">Email</label>
-            <input type="email" name="email" class="form-control" id="email" placeholder="Seu email">            
+            <input type="email" name="email" class="form-control" id="email" placeholder="Seu email" value="{{ old('email') }}">            
         </div>
  
         <div class="mb-3">
-            <label for="senha"  class="form-label">Senha</label>
-            <input type="password" name="senha" class="form-control" id="senha" placeholder="Sua senha">            
+            <label for="password"  class="form-label">Senha</label>
+            <input type="password" name="password" class="form-control" id="password" placeholder="Sua senha">            
         </div>
  
         <div class="mb-3">
-            <label for="senha_confirme"  class="form-label">Comfirme a senha</label>
-            <input type="password" name="senha_confirme" class="form-control" id="senha_confirme" placeholder="Confirme sua senha">            
+            <label for="password_confirmation"  class="form-label">Comfirme a senha</label>
+            <input type="password" name="password_confirmation" class="form-control" id="password_confirmation" placeholder="Confirme sua senha">            
         </div>
        
         <button type="submit" class="btn btn-primary">Salvar</button>
