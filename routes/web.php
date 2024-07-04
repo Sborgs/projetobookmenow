@@ -17,6 +17,7 @@ Route::get('/admin/usuarios/editar/{id}',[UsuarioController::class, "edit"])->na
 Route::get('/admin/usuarios/visualizar/{id}',[UsuarioController::class, "show"])->name("usuario.show");
 Route::post('/admin/usuarios/cadastrar/salvar',[UsuarioController::class, "store"])->name("usuario.store");
 route::put('/admin/usuarios/atualizar/{id}', [UsuarioController::class, "update"])->name("usuario.update");
+route::delete('/admin/usuarios/deletar/{id}', [UsuarioController::class, "destroy"])->name("usuario.destroy");
 
 //Rotas da Seção Categorias
 route::get('/admin/dashboard',[DashboardController::class, "dashboard"])->name("dashboard");

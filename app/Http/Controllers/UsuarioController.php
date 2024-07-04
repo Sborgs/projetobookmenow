@@ -11,7 +11,8 @@ class UsuarioController extends Controller
   
     public function index()
     {
-        $usuarios = User::all();
+       // $usuarios = User::all();
+        $usuarios = User::paginate(10);
         return view('admin.usuarios.index', compact('usuarios'));
     }
 
@@ -36,7 +37,7 @@ class UsuarioController extends Controller
             'password' => Hash::make($request->senha)
         ]);
 
-        return redirect()->route('usuario.index');
+        return redirect()->route('usuario.index')->with('sucesso', 'Usuário cadastrado com sucesso!!!');
     }
 
     public function show(string $id)
@@ -69,11 +70,19 @@ class UsuarioController extends Controller
                 'password' => $request->password ? Hash::make($request->password): $usuario->password
             ]);
     
-            return redirect()->route('usuario.index');
-    }
+            return redirect()->route('usuario.index')->with('sucesso', 'Usuário atualizado com sucesso!!!');
+        }
+        
+        public function destroy(string $id)
+        {
+            try{
+            $usuario = User::findOrFail($id);
+            $usuario->delete();
+            return redirect()->route('usuario.index')->with('sucesso', 'Usuário deletado com sucesso!!!');
+        }catch(\Exception $e){
+            
+            return redirect()->route('usuario.index')->with('error', 'Erro ao deletar o usuário!!!');
+            }
 
-    public function destroy(string $id)
-    {
-        //
     }
 }
