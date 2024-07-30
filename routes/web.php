@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\SiteController;
 use App\Http\Controllers\UsuarioController;
@@ -20,4 +21,16 @@ route::put('/admin/usuarios/atualizar/{id}', [UsuarioController::class, "update"
 route::delete('/admin/usuarios/deletar/{id}', [UsuarioController::class, "destroy"])->name("usuario.destroy");
 
 //Rotas da Seção Categorias
+route::get('/admin/categorias',[CategoriaController::class, "index"])->name("categoria.index");
+Route::get('/admin/categorias/cadastrar',[CategoriaController::class, "create"])->name("categoria.create");
+Route::get('/admin/categorias/editar/{id}',[CategoriaController::class, "edit"])->name("categoria.editar");
+Route::get('/admin/categorias/visualizar/{id}',[CategoriaController::class, "show"])->name("categoria.show");
+Route::post('/admin/categorias/cadastrar/salvar',[CategoriaController::class, "store"])->name("categoria.store");
+route::put('/admin/categorias/atualizar/{id}', [CategoriaController::class, "update"])->name("categoria.update");
+route::delete('/admin/categorias/deletar/{id}', [CategoriaController::class, "destroy"])->name("categoria.destroy");
+
+
+
+
+//Rotas da Seção Dashboard
 route::get('/admin/dashboard',[DashboardController::class, "dashboard"])->name("dashboard");

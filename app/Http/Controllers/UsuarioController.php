@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Hash;
 
 class UsuarioController extends Controller
 {
-  
+
     public function index()
     {
         $usuarios = User::paginate(10);
@@ -55,33 +55,32 @@ class UsuarioController extends Controller
     public function update(Request $request, string $id)
     {
 
-            $request->validate([
-                'nome' => 'required',
-                'email' => 'required|string|email|unique:usuarios,email,'.$id,
-                'password' => 'nullable|min:8|confirmed'
-            ]);
-    
-            $usuario = User::findOrFail($id);
+        $request->validate([
+            'nome' => 'required',
+            'email' => 'required|string|email|unique:usuarios,email,' . $id,
+            'password' => 'nullable|min:8|confirmed'
+        ]);
 
-            $usuario->update([
-                'nome' => $request->nome,
-                'email' => $request->email,
-                'password' => $request->password ? Hash::make($request->password): $usuario->password
-            ]);
-    
-            return redirect()->route('usuario.index')->with('sucesso', 'Usuário atualizado com sucesso!!!');
-        }
-        
-        public function destroy(string $id)
-        {
-            try{
+        $usuario = User::findOrFail($id);
+
+        $usuario->update([
+            'nome' => $request->nome,
+            'email' => $request->email,
+            'password' => $request->password ? Hash::make($request->password) : $usuario->password
+        ]);
+
+        return redirect()->route('usuario.index')->with('sucesso', 'Usuário atualizado com sucesso!!!');
+    }
+
+    public function destroy(string $id)
+    {
+        try {
             $usuario = User::findOrFail($id);
             $usuario->delete();
             return redirect()->route('usuario.index')->with('sucesso', 'Usuário deletado com sucesso!!!');
-        }catch(\Exception $e){
-            
-            return redirect()->route('usuario.index')->with('error', 'Erro ao deletar o usuário!!!');
-            }
+        } catch (\Exception $e) {
 
+            return redirect()->route('usuario.index')->with('error', 'Erro ao deletar o usuário!!!');
+        }
     }
 }
