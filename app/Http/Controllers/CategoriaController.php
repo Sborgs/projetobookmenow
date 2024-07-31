@@ -3,109 +3,81 @@
 namespace App\Http\Controllers;
 
 use App\Models\Categoria;
+use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class CategoriaController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+
     public function index()
     {
-        $categorias = Categoria::paginate(10);
+        $categorias = Categoria::all();
         return view('admin.categorias.index', compact('categorias'));
-
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
-        return view('admin.categoria.cadastrar');
-
+        return view('admin.categorias.cadastrar');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-        $request->validate([
-            'titulo' => 'required|string|max:255',
-            'imagem' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'descricao' => 'required|string',
-        ]);
 
+        $request->validate([
+            'titulo' => 'required',
+            'descricao' => 'required',
+            
+        ]);
 
         Categoria::create([
             'titulo' => $request->titulo,
-            'imagem' => $request->imageName,
             'descricao' => $request->descricao,
+          
         ]);
 
-        return redirect()->route('categoria.index')->with('sucesso', 'Categoria cadastrada com sucesso!!!');
-
+        return redirect()->route('categoria.index')->with('sucesso', 'Categoria cadastrado com sucesso!');
     }
 
-    /**
-     * Display the specified resource.
-     */
     public function show(string $id)
     {
         $categoria = Categoria::findOrFail($id);
         return view('admin.categorias.visualizar', compact('categoria'));
-
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit(string $id)
     {
         $categoria = Categoria::findOrFail($id);
         return view('admin.categorias.editar', compact('categoria'));
-
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request, string $id)
     {
         $request->validate([
-            'titulo' => 'required|string|max:255',
-            'imagem' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'descricao' => 'required|string',
+            'titulo' => 'required',
+            'descricao' => 'required',
         ]);
 
         $categoria = Categoria::findOrFail($id);
 
         $categoria->update([
             'titulo' => $request->titulo,
-            'imagem' => $request->imageName,
             'descricao' => $request->descricao,
+           
         ]);
 
-        return redirect()->route('categoria.index')->with('sucesso', 'Categoria cadastrada com sucesso!!!');
-    
-
+        return redirect()->route('categoria.index')->with('sucesso', 'Categoria atualizado com sucesso!!!');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(string $id)
     {
         try {
             $categoria = Categoria::findOrFail($id);
             $categoria->delete();
-            return redirect()->route('categoria.index')->with('sucesso', 'Categoria deletada com sucesso!!!');
+            return redirect()->route('categoria.index')->with('sucesso', 'Categoria deletado com sucesso!!!');
         } catch (\Exception $e) {
 
-            return redirect()->route('categoria.index')->with('error', 'Erro ao deletar a categoria!!!');
+            return redirect()->route('categoria.index')->with('error', 'Erro ao deletar o usuário');
         }
-
     }
-
 }

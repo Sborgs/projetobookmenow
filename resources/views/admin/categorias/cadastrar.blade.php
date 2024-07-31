@@ -1,47 +1,43 @@
 @extends('admin.dashboard')
- 
 @section('conteudo')
     <div class="d-flex justify-content-between mt-3">
-        <h2>Cadastrar Categorias</h2>
-     </div>
-     <hr>
+        <h2>Cadastrar Categoria</h2>
+    </div>
+    <hr>
 
-     @if ($errors->any())
+    @if ($errors->any())
         <div class="boxError alert alert-danger">
             <ul>
                 @foreach ($errors->all() as $erro)
                     <li>{{ $erro }}</li>
-                @endforeach                
+                @endforeach
             </ul>
         </div>
-     @endif
+    @endif
 
-    <form action="{{ route('categoria.store')}}" method="post">
+
+    <form action="{{ route('categoria.store') }}" method="POST">
         @csrf
         <div class="mb-3">
-            <label for="nome"  class="form-label">Nome</label>
-            <input type="text" name="nome" class="form-control" id="nome" placeholder="Seu nome" value="{{ old('nome') }}">            
+            <label for="titulo" class="form-label">Título</label>
+            <input type="text" name="titulo" class="form-control" id="titulo" placeholder="Seu Titulo"
+                value="{{ old('titulo') }}">
         </div>
- 
         <div class="mb-3">
-            <label for="email"  class="form-label">Email</label>
-            <input type="email" name="email" class="form-control" id="email" placeholder="Seu email" value="{{ old('email') }}">            
+            <label for="imagem" class="form-label">Imagem</label>
+            <input type="file" name="imagem" class="form-control" id="imagem" placeholder="Seu Imagem"
+                value="{{ old('imagem') }}">
         </div>
- 
+
+
         <div class="mb-3">
-            <label for="password"  class="form-label">Senha</label>
-            <input type="password" name="password" class="form-control" id="password" placeholder="Sua senha">            
+            <label for="descricao" class="form-label">Descrição</label>
+            <textarea class="form-control" name="descricao" id="descricao" cols="30" rows="10">
+                {{ old('descricao') }}
+            </textarea>
         </div>
- 
-        <div class="mb-3">
-            <label for="password_confirmation"  class="form-label">Comfirme a senha</label>
-            <input type="password" name="password_confirmation" class="form-control" id="password_confirmation" placeholder="Confirme sua senha">            
-        </div>
-       
+
         <button type="submit" class="btn btn-primary">Salvar</button>
-        <a href="{{route("categoria.index")}}" class="btn btn-secondary">Cancelar</a>
-   
+        <a href="{{ route('categoria.index') }}" class="btn btn-secondary">Cancelar</a>
     </form>
- 
- 
 @endsection
