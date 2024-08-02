@@ -59,4 +59,5 @@
             @endforeach
         </tbody>
     </table>
+    {{ $servicos->links() }}
 @endsection

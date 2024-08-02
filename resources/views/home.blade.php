@@ -1,5 +1,6 @@
 @extends('layouts.site')
 
+
 @section('conteudo')
     <section id="secaoCategorias">
         <div class="secao-titulo">
@@ -58,7 +59,7 @@
 
                         <div class="card-foto-legenda">
                             <div class="card-foto-preco">
-                                R$ {{ number_format($servico->valor) }}
+                                R$ {{ number_format($servico->valor, 2, ',') }}
                             </div>
                             <div class="card-foto-categoria">
                                 Informática
@@ -71,7 +72,7 @@
                     <div class="card-descricao">
 
                         <div class="card-titulo">
-                            <h3>Formatação de Computador</h3>
+                            <h3>{{ $servico->titulo }}</h3>
                         </div>
 
                         <div class="card-avaliacao">
@@ -100,8 +101,6 @@
                 </div>
                 <!-- Fim Card Serviços -->
             @endforeach
-
-        </div>
 
     </section>
 @endsection

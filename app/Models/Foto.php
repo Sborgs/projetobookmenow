@@ -9,10 +9,10 @@ class Foto extends Model
 {
     use HasFactory;
 
-    public function Servico () {
 
+  
+    public function servico(){
         return $this->belongsTo(Servico::class);
-
     }
-
+ 
 }

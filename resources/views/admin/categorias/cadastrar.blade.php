@@ -1,7 +1,7 @@
 @extends('admin.dashboard')
 @section('conteudo')
     <div class="d-flex justify-content-between mt-3">
-        <h2>Cadastrar Categoria</h2>
+        <h2>Cadastrar Usuários</h2>
     </div>
     <hr>
 

@@ -1,7 +1,7 @@
 @extends('admin.dashboard')
 @section('conteudo')
     <div class="d-flex justify-content-between mt-3">
-        <h2>Visualizar Serviço</h2>
+        <h2>Visualizar Serviços</h2>
     </div>
     <hr>
     <table class="table table-striped">
@@ -11,17 +11,18 @@
         </tr>
 
         <tr>
-            <th>Nome do usuário</th>
-            <td>{{ $servico->usuario_id }}</td>
+            <th>Nome Usuário</th>
+            <td>{{ $servico->usuario->nome }}</td>
         </tr>
+
 
         <tr>
             <th>Categoria</th>
-            <td>{{ $servico->categoria_id }}</td>
+            <td>{{ $servico->categoria->titulo }}</td>
         </tr>
 
         <tr>
-            <th>Título</th>
+            <th>Titulo</th>
             <td>{{ $servico->titulo }}</td>
         </tr>
 
@@ -51,7 +52,7 @@
         </tr>
 
         <tr>
-            <th>Complemento</th>
+            <th>Completo</th>
             <td>{{ $servico->complemento }}</td>
         </tr>
 
@@ -79,8 +80,8 @@
             <th>Descrição</th>
             <td>{{ $servico->descricao }}</td>
         </tr>
-
     </table>
+
     <a href="{{ route('servico.edit', ['id' => $servico->id]) }}" class="btn btn-primary">Editar</a>
     <a href="{{ route('servico.index') }}" class="btn btn-secondary">Cancelar</a>
 @endsection

@@ -35,5 +35,6 @@ class CategoriaSeeder extends Seeder
             
         }
 
+
     }
 }

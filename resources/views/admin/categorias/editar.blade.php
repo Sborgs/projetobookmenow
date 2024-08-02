@@ -1,7 +1,7 @@
 @extends('admin.dashboard')
 @section('conteudo')
     <div class="d-flex justify-content-between mt-3">
-        <h2>Editar Categoria</h2>
+        <h2>Editar Categorias</h2>
     </div>
     <hr>
     @if ($errors->any())
@@ -29,7 +29,7 @@
 
 
         <div class="mb-3">
-            <label for="descricao" class="form-label">Descrição</label>
+            <label for="password_confirmation" class="form-label">Descrição</label>
             <textarea class="form-control" name="descricao" id="descricao" cols="30" rows="10">{{ old('titulo', $categoria->descricao) }}</textarea>
         </div>
 

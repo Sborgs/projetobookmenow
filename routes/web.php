@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\ServicoController;
 use App\Http\Controllers\SiteController;
 use App\Http\Controllers\UsuarioController;
 use Illuminate\Support\Facades\Route;
@@ -28,6 +29,16 @@ Route::get('/admin/categorias/visualizar/{id}', [CategoriaController::class, "sh
 Route::post('/admin/categorias/cadastrar/salvar', [CategoriaController::class, "store"])->name("categoria.store");
 Route::put('/admin/categorias/atualizar/{id}', [CategoriaController::class, "update"])->name("categoria.update");
 Route::delete('/admin/categorias/deletar/{id}', [CategoriaController::class, "destroy"])->name("categoria.destroy");
+
+
+//Rotas da Seção Serviços
+Route::get('/admin/servicos', [ServicoController::class, "index"])->name("servico.index");
+Route::get('/admin/servicos/cadastrar', [ServicoController::class, "create"])->name("servico.create");
+Route::get('/admin/servicos/editar/{id}', [ServicoController::class, "edit"])->name("servico.edit");
+Route::get('/admin/servicos/visualizar/{id}', [ServicoController::class, "show"])->name("servico.show");
+Route::post('/admin/servicos/cadastrar/salvar', [ServicoController::class, "store"])->name("servico.store");
+Route::put('/admin/servicos/atualizar/{id}', [ServicoController::class, "update"])->name("servico.update");
+Route::delete('/admin/servicos/deletar/{id}', [ServicoController::class, "destroy"])->name("servico.destroy");
 
 //Rotas da Seção DashBoard
 Route::get('/admin/dashboard',[DashboardController::class, "dashboard"])->name("dashboard");
