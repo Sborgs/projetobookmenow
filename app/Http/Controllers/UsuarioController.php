@@ -12,7 +12,7 @@ class UsuarioController extends Controller
   
     public function index()
     {
-       $usuarios = User::all();
+       $usuarios = User::paginate(10);
        return view('admin.usuarios.index', compact('usuarios'));
     }
 
@@ -45,7 +45,6 @@ class UsuarioController extends Controller
         $usuario = User::findOrFail($id);
        return view('admin.usuarios.visualizar', compact('usuario'));
     }
-
     public function edit(string $id)
     {
         $usuario = User::findOrFail($id);

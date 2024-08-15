@@ -74,10 +74,10 @@ class CategoriaController extends Controller
         try {
             $categoria = Categoria::findOrFail($id);
             $categoria->delete();
-            return redirect()->route('categoria.index')->with('sucesso', 'Categoria deletado com sucesso!!!');
+            return redirect()->route('categoria.index')->with('sucesso', 'Categoria deletada com sucesso!!!');
         } catch (\Exception $e) {
 
-            return redirect()->route('categoria.index')->with('error', 'Erro ao deletar o usuário');
+            return redirect()->route('categoria.index')->with('error', 'Erro ao deletar a categoriaS');
         }
     }
 }

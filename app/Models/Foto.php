@@ -9,7 +9,10 @@ class Foto extends Model
 {
     use HasFactory;
 
-
+    protected $fillable = [
+        'imagem',
+        'servico_id'
+    ];
   
     public function servico(){
         return $this->belongsTo(Servico::class);

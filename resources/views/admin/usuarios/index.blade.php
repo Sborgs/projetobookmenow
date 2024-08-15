@@ -24,7 +24,6 @@
         <thead>
             <tr>
                 <th>ID</th>
-
                 <th>Nome</th>
                 <th>E-mail</th>
                 <th>Ação</th>
@@ -51,11 +50,18 @@
 
                         </form>
 
-
-
                     </td>
                 </tr>
             @endforeach
         </tbody>
+
     </table>
+    {{ $usuarios->links() }}
+
+    <script>
+        function confirmaExclusao() {
+            // Exibe a caixa de diálogo de confirmação
+            return confirm("Deseja realmente excluir este registro?");
+        }
+    </script>
 @endsection

@@ -18,6 +18,7 @@
 
     <form action="{{ route('servico.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
+        @method('PUT')
 
         <div class="mb-3">
             <label for="usuario_id" class="form-label">Usuário</label>
