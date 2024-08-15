@@ -21,7 +21,7 @@ class ServicoController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.servicos.cadastrar');
     }
 
     /**
@@ -29,7 +29,23 @@ class ServicoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'titulo'=> 'required|string|max:100',
+            'descricao'=> 'required',
+            'valor'=> 'required|numeric',
+            'celular'=> 'required|string|max:20',
+            'endereco'=> 'required',
+            'numero'=> 'required',
+            'bairro'=> 'required',
+            'cidade'=> 'required',
+            'estado'=> 'required',
+            'cep'=> 'required',
+            'usuario_id'=> 'required',
+            'categoria_id'=> 'required',
+        ]);
+         
+        Servico::create($request->all());
+        return redirect()->route('servico.index')->with('success', 'Cadastro realizado com Sucesso!!!');
     }
 
     /**
