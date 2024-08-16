@@ -121,6 +121,7 @@ class ServicoController extends Controller
         ]);
 
         return redirect()->route('servico.index')->with('sucesso', 'Serviço atualizado com sucesso!!!');
+        
     }
 
     /**
