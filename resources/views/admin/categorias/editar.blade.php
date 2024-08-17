@@ -16,6 +16,22 @@
     <form action="{{ route('categoria.update', ['id' => $categoria->id]) }}" method="POST">
         @csrf
         @method('PUT')
+
+        <div class="mb-3">
+            <label for="usuario_id" class="form-label">Usuário</label>
+            <select name="usuario_id" id="usuario_id" class="form-control">
+                <option value="1">Edson Rodrigues</option>
+                <option value="2">Maria da Silva</option>
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label for="categoria_id" class="form-label">servico</label>
+            <select name="categoria_id" id="servico_id" class="form-control">
+                <option value="1">Tecnologia</option>
+                <option value="2">Construção</option>
+            </select>
+        </div>
         <div class="mb-3">
             <label for="titulo" class="form-label">Título</label>
             <input type="text" name="titulo" class="form-control" id="titulo" placeholder="Seu Titulo"

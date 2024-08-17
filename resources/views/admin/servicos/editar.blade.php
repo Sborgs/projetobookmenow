@@ -26,8 +26,8 @@
         </div>
 
         <div class="mb-3">
-            <label for="servico_id" class="form-label">servico</label>
-            <select name="servico_id" id="servico_id" class="form-control">
+            <label for="categoria_id" class="form-label">servico</label>
+            <select name="categoria_id" id="servico_id" class="form-control">
                 <option value="1">Tecnologia</option>
                 <option value="2">Construção</option>
             </select>

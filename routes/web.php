@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AutenticacaoController;
 use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ServicoController;
@@ -42,3 +43,8 @@ Route::delete('/admin/servicos/deletar/{id}', [ServicoController::class, "destro
 
 //Rotas da Seção DashBoard
 Route::get('/admin/dashboard',[DashboardController::class, "dashboard"])->name("dashboard");
+
+// Rotas de Login
+route::get("/login",[AutenticacaoController::class, "formLogin"])->name("login.form");
+route::post("/login",[AutenticacaoController::class, "login"])->name("login");
+route::get("/logout",[AutenticacaoController::class, "logout"])->name("logout");

@@ -1,7 +1,7 @@
 @extends('admin.dashboard')
 @section('conteudo')
     <div class="d-flex justify-content-between mt-3">
-        <h2>Cadastrar Usuários</h2>
+        <h2>Cadastrar Categoria</h2>
     </div>
     <hr>
 
@@ -18,6 +18,7 @@
 
     <form action="{{ route('categoria.store') }}" method="POST">
         @csrf
+
         <div class="mb-3">
             <label for="titulo" class="form-label">Título</label>
             <input type="text" name="titulo" class="form-control" id="titulo" placeholder="Seu Titulo"
