@@ -43,10 +43,20 @@
                 <img src="{{ asset('img/logo.png') }}" width="300" alt="logo">
 
                 <h4>Login</h4>
+
+                @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul class="list-unstyled">
+                        @foreach ($errors->all() as $erro)
+                            <li> {{ $erro}} </li>
+                        @endforeach
+                    </ul>
+                </div>
+                @endif
             </div>
 
 
-            <form method="post" action="#">
+            <form method="post" action="{{ route('login') }}">
                 @csrf
                 <div class="mb-3">
                     <label for="email" class="form-label">E-mail</label>
@@ -55,7 +65,7 @@
 
                 <div class="mb-3">
                     <label for="senha" class="form-label">Senha</label>
-                    <input type="password" name="senha" id="senha" class="form-control">
+                    <input type="password" name="password" id="senha" class="form-control">
                 </div>
                 <button type="submit" class="btn btn-primary btn-block w-100">Entrar</button>
 

@@ -13,6 +13,12 @@ Route::get('/',[SiteController::class, "home"])->name("site.home");
 Route::get('/sobre-nos',[SiteController::class, "sobreNos"])->name("site.sobrenos");
 Route::get('/contato',[SiteController::class, "contato"])->name("site.contato");
 
+
+
+route::middleware(['auth'])->group(function () {
+
+
+
 //Rotas da Seção Usuário
 Route::get('/admin/usuarios',[UsuarioController::class, "index"])->name("usuario.index");
 Route::get('/admin/usuarios/cadastrar', [UsuarioController::class, "create"])->name("usuario.create");
@@ -44,7 +50,9 @@ Route::delete('/admin/servicos/deletar/{id}', [ServicoController::class, "destro
 //Rotas da Seção DashBoard
 Route::get('/admin/dashboard',[DashboardController::class, "dashboard"])->name("dashboard");
 
+});
+
 // Rotas de Login
-route::get("/login",[AutenticacaoController::class, "formLogin"])->name("login.form");
+route::get("/login",[AutenticacaoController::class, "formLogin"])->name("login.form")->middleware('guest');
 route::post("/login",[AutenticacaoController::class, "login"])->name("login");
 route::get("/logout",[AutenticacaoController::class, "logout"])->name("logout");

@@ -10,15 +10,15 @@
             <td>{{ $categoria->id }}</td>
         </tr>
         <tr>
-            <th>Nome</th>
+            <th>Tíbulo</th>
             <td>{{ $categoria->titulo }}</td>
         </tr>
         <tr>
-            <th>E-mail</th>
+            <th>Imagem</th>
             <td>{{ $categoria->imagem }}</td>
         </tr>
         <tr>
-            <th>E-mail</th>
+            <th>Descrição</th>
             <td>{{ $categoria->descricao }}</td>
         </tr>
     </table>
